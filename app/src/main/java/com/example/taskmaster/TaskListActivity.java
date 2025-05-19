@@ -2,13 +2,9 @@ package com.example.taskmaster;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,7 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class TaskListActivity extends AppCompatActivity {
+public class TaskListActivity extends BaseActivity {
     private RecyclerView recyclerViewTasks;
     private TextView textViewWelcome, textViewNoTasks;
     private FloatingActionButton fabAddTask;
@@ -32,7 +28,7 @@ public class TaskListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task_list);
+        setContentLayout(R.layout.activity_task_list);
 
         // Initialize views
         recyclerViewTasks = findViewById(R.id.recyclerViewTasks);
@@ -67,8 +63,8 @@ public class TaskListActivity extends AppCompatActivity {
             fabAddTask.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Navigate to TaskDetailActivity to create a new task
-                    Intent intent = new Intent(TaskListActivity.this, TaskDetailActivity.class);
+                    // Navigate to AddTaskActivity to create a new task
+                    Intent intent = new Intent(TaskListActivity.this, AddTaskActivity.class);
                     startActivity(intent);
                 }
             });
@@ -112,26 +108,5 @@ public class TaskListActivity extends AppCompatActivity {
             });
             recyclerViewTasks.setAdapter(taskAdapter);
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_logout) {
-            // Logout user
-            sessionManager.logout();
-
-            // Navigate to LoginActivity
-            Intent intent = new Intent(TaskListActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

@@ -182,4 +182,20 @@ public class TaskDao {
         db.close();
         return taskList;
     }
+
+    // Add this method to TaskDao.java
+
+    public long insertTask(Task task) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DatabaseHelper.COLUMN_TASK_TITLE, task.getTitle());
+        values.put(DatabaseHelper.COLUMN_TASK_DESCRIPTION, task.getDescription());
+        values.put(DatabaseHelper.COLUMN_TASK_STATUS, task.getStatus());
+        values.put(DatabaseHelper.COLUMN_TASK_ASSIGNED_TO, task.getAssignedTo());
+        values.put(DatabaseHelper.COLUMN_TASK_CREATED_BY, task.getCreatedBy());
+        values.put(DatabaseHelper.COLUMN_TASK_CREATED_AT, System.currentTimeMillis());
+        long id = db.insert(DatabaseHelper.TABLE_TASKS, null, values);
+        db.close();
+        return id;
+    }
 }

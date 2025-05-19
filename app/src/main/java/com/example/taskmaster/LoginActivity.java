@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.taskmaster.dao.UserDao;
 import com.example.taskmaster.model.User;
 import com.example.taskmaster.util.SessionManager;
@@ -15,7 +16,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText editTextUsername, editTextPassword;
     private Button buttonLogin;
-    private TextView textViewError;
+    private TextView textViewError, textViewRegister;
     private UserDao userDao;
     private SessionManager sessionManager;
 
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonLogin = findViewById(R.id.buttonLogin);
         textViewError = findViewById(R.id.textViewError);
+        textViewRegister = findViewById(R.id.textViewRegister);
 
         // Initialize DAO and SessionManager
         userDao = new UserDao(this);
@@ -40,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, TaskListActivity.class);
             startActivity(intent);
             finish();
+            return;
         }
 
         // Set up login button click listener
@@ -70,6 +73,15 @@ public class LoginActivity extends AppCompatActivity {
                     textViewError.setText(R.string.invalid_credentials);
                     textViewError.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+
+        // Set up register link click listener
+        textViewRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }

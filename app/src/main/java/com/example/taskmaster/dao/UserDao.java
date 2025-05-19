@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.taskmaster.database.DatabaseHelper;
 import com.example.taskmaster.model.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserDao {
     private final DatabaseHelper dbHelper;
 
@@ -201,5 +204,43 @@ public class UserDao {
                 new String[]{String.valueOf(user.getId())});
         db.close();
         return rows;
+    }
+
+    public List<User> getAllTeamMembers() {
+        List<User> teamMembers = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String[] columns = {
+                DatabaseHelper.COLUMN_USER_ID,
+                DatabaseHelper.COLUMN_USER_FIRSTNAME,
+                DatabaseHelper.COLUMN_USER_LASTNAME,
+                DatabaseHelper.COLUMN_USERNAME,
+                DatabaseHelper.COLUMN_USER_TYPE,
+                DatabaseHelper.COLUMN_USER_EMAIL
+        };
+        String selection = DatabaseHelper.COLUMN_USER_TYPE + "=?";
+        String[] selectionArgs = { "TEAM_MEMBER" };
+
+        Cursor cursor = db.query(
+                DatabaseHelper.TABLE_USERS,
+                columns,
+                selection,
+                selectionArgs,
+                null, null, null
+        );
+
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                User user = new User();
+                user.setId(cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_USER_ID)));
+                user.setFirstname(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_USER_FIRSTNAME)));
+                user.setLastname(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_USER_LASTNAME)));
+                user.setUsername(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_USERNAME)));
+                user.setUserType(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_USER_TYPE)));
+                user.setEmail(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_USER_EMAIL)));
+                teamMembers.add(user);
+            }
+            cursor.close();
+        }
+        return teamMembers;
     }
 }

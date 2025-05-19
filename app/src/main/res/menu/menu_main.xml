@@ -2,6 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/action_create_task"
+        android:title="Create Task"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_list_tasks"
+        android:title="List Tasks"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_logout"
         android:title="Logout"
         app:showAsAction="never" />

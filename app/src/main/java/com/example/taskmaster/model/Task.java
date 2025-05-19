@@ -77,4 +77,13 @@ public class Task {
     public void setCreatedAt(long createdAt) {
         this.createdAt = createdAt;
     }
+
+    // Compatibility methods for assigneeId
+    public int getAssigneeId() {
+        return assignedTo;
+    }
+
+    public void setAssigneeId(int assigneeId) {
+        this.assignedTo = assigneeId;
+    }
 }

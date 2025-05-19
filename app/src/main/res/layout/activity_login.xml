@@ -52,4 +52,12 @@
         android:textSize="12sp"
         android:gravity="center"
         android:layout_marginTop="16dp"/>
+    <TextView
+        android:id="@+id/textViewRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dont_have_an_account"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="16dp" />
 </LinearLayout>

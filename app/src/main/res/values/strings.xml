@@ -37,6 +37,14 @@
     <string name="task_title">Task Title</string>
     <string name="assign_to_label">Assign To (User ID):</string>
     <string name="user_id_hint">User ID</string>
+    <string name="dont_have_an_account">Dont have an account? Register</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="task_title_hint">Task Title</string>
+    <string name="task_description_hint">Task Description</string>
+    <string name="status_label">Status</string>
+    <string name="assignee_label">Assignee</string>
+    <string name="create_task_button">Create Task</string>
 
     <!-- Task status options -->
     <string-array name="task_status_options">
