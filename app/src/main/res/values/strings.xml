@@ -1,17 +1,37 @@
 <resources>
     <string name="app_name">TaskMaster</string>
-    <string name="login">Login</string>
-    <string name="username">Username</string>
-    <string name="password">Password</string>
+    <string name="login_title">TaskMaster</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button">Login</string>
     <string name="invalid_credentials">Invalid username or password</string>
-    <string name="welcome">Welcome, %1$s</string>
+    <string name="register_title">Register</string>
+    <string name="firstname_hint">First Name</string>
+    <string name="lastname_hint">Last Name</string>
+    <string name="email_hint">Email</string>
+    <string name="register_button">Register</string>
+    <string name="register_error_fill">Please fill in all fields</string>
+    <string name="register_error_username">Username already exists</string>
+    <string name="register_error_email">Email already registered</string>
+    <string name="register_error_failed">Registration failed. Try again.</string>
+    <string name="edit_profile_title">Edit Profile</string>
+    <string name="save_button">Save</string>
+    <string name="edit_profile_error_required">All fields are required.</string>
+    <string name="edit_profile_error_email">Email already in use.</string>
+    <string name="edit_profile_success">Profile updated successfully.</string>
+    <string name="edit_profile_failed">Update failed.</string>
+    <string name="login_credentials_hint">Use credentials:\nManager: manager/password123\nTeam Member: team_member/password123</string>
+    <string name="task_detail_title">Task Details</string>
+    <string name="task_description_label">Description:</string>
+    <string name="task_description_placeholder">Task description goes here.</string>
+    <string name="task_due_date_label">Due Date:</string>
+    <string name="task_due_date_placeholder">MM/DD/YYYY</string>
+    <string name="task_status_label">Status:</string>
+    <string name="task_status_placeholder">Pending</string>
+    <string name="task_list_title">Task List</string>
+    <string name="welcome_user">Welcome, User</string>
+    <string name="no_tasks_available">No tasks available</string>
     <string name="add_task">Add Task</string>
-    <string name="task_title">Task Title</string>
-    <string name="task_description">Task Description</string>
-    <string name="task_status">Status</string>
-    <string name="assign_to">Assign To</string>
-    <string name="save">Save</string>
-    <string name="no_tasks">No tasks available</string>
 
     <!-- Task status options -->
     <string-array name="task_status_options">
