@@ -1,3 +1,4 @@
+// app/src/main/java/com/example/taskmaster/database/DatabaseHelper.java
 package com.example.taskmaster.database;
 
 import android.content.ContentValues;
@@ -7,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "taskmaster.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // User table
     public static final String TABLE_USERS = "users";
@@ -15,6 +16,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_USERNAME = "username";
     public static final String COLUMN_PASSWORD = "password";
     public static final String COLUMN_USER_TYPE = "user_type"; // "MANAGER" or "TEAM_MEMBER"
+    public static final String COLUMN_USER_FIRSTNAME = "firstname";
+    public static final String COLUMN_USER_LASTNAME = "lastname";
+    public static final String COLUMN_USER_EMAIL = "email";
+    public static final String COLUMN_USER_CREATED_AT = "created_at";
 
     // Task table
     public static final String TABLE_TASKS = "tasks";
@@ -37,7 +42,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_USERNAME + " TEXT UNIQUE,"
                 + COLUMN_PASSWORD + " TEXT,"
-                + COLUMN_USER_TYPE + " TEXT"
+                + COLUMN_USER_TYPE + " TEXT,"
+                + COLUMN_USER_FIRSTNAME + " TEXT,"
+                + COLUMN_USER_LASTNAME + " TEXT,"
+                + COLUMN_USER_EMAIL + " TEXT UNIQUE,"
+                + COLUMN_USER_CREATED_AT + " INTEGER"
                 + ")";
 
         // Create tasks table
@@ -61,16 +70,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void insertDefaultUsers(SQLiteDatabase db) {
+        long now = System.currentTimeMillis();
+
         ContentValues managerValues = new ContentValues();
         managerValues.put(COLUMN_USERNAME, "manager");
         managerValues.put(COLUMN_PASSWORD, "password123");
         managerValues.put(COLUMN_USER_TYPE, "MANAGER");
+        managerValues.put(COLUMN_USER_FIRSTNAME, "Manager");
+        managerValues.put(COLUMN_USER_LASTNAME, "User");
+        managerValues.put(COLUMN_USER_EMAIL, "manager@example.com");
+        managerValues.put(COLUMN_USER_CREATED_AT, now);
         db.insert(TABLE_USERS, null, managerValues);
 
         ContentValues teamMemberValues = new ContentValues();
         teamMemberValues.put(COLUMN_USERNAME, "team_member");
         teamMemberValues.put(COLUMN_PASSWORD, "password123");
         teamMemberValues.put(COLUMN_USER_TYPE, "TEAM_MEMBER");
+        teamMemberValues.put(COLUMN_USER_FIRSTNAME, "Team");
+        teamMemberValues.put(COLUMN_USER_LASTNAME, "Member");
+        teamMemberValues.put(COLUMN_USER_EMAIL, "team_member@example.com");
+        teamMemberValues.put(COLUMN_USER_CREATED_AT, now);
         db.insert(TABLE_USERS, null, teamMemberValues);
     }
 
