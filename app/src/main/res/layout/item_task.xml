@@ -17,6 +17,22 @@
         android:layout_marginBottom="4dp"/>
 
     <TextView
+        android:id="@+id/textViewTaskDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/task_description_label"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/textViewAssignedTo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/assigned_to_placeholder"
+        android:textSize="14sp"
+        android:layout_marginTop="2dp"/>
+
+    <TextView
         android:id="@+id/textViewTaskDueDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

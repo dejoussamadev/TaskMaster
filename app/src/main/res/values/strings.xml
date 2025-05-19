@@ -32,6 +32,11 @@
     <string name="welcome_user">Welcome, User</string>
     <string name="no_tasks_available">No tasks available</string>
     <string name="add_task">Add Task</string>
+    <string name="assigned_to_placeholder">Assigned to: </string>
+    <string name="welcome">Welcome, %1$s</string>
+    <string name="task_title">Task Title</string>
+    <string name="assign_to_label">Assign To (User ID):</string>
+    <string name="user_id_hint">User ID</string>
 
     <!-- Task status options -->
     <string-array name="task_status_options">
